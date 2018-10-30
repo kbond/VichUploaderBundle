@@ -12,9 +12,10 @@
 
         <service
             id="vich_uploader.storage"
-            class="Vich\UploaderBundle\Storage\StorageInterface"
-            factory-service="vich_uploader.storage_factory"
-            factory-method ="createStorage">
+            class="Vich\UploaderBundle\Storage\StorageInterface">
+            <factory service="vich_uploader.storage_factory"
+                     method="createStorage"
+            />
         </service>
     </services>
 
