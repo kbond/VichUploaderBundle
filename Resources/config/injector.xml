@@ -6,7 +6,7 @@
 
     <services>
 
-        <service id="vich_uploader.file_injector" class="Vich\UploaderBundle\Injector\FileInjector">
+        <service id="vich_uploader.file_injector" class="Vich\UploaderBundle\Injector\FileInjector" public="true">
             <argument type="service" id="vich_uploader.property_mapping_factory" />
             <argument type="service" id="vich_uploader.storage" />
         </service>

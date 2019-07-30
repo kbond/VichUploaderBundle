@@ -6,13 +6,14 @@
 
     <services>
 
-        <service id="vich_uploader.storage.file_system" class="Vich\UploaderBundle\Storage\FileSystemStorage">
+        <service id="vich_uploader.storage.file_system" class="Vich\UploaderBundle\Storage\FileSystemStorage" public="true">
             <argument type="service" id="vich_uploader.property_mapping_factory" />
         </service>
 
         <service
             id="vich_uploader.storage"
-            class="Vich\UploaderBundle\Storage\StorageInterface">
+            class="Vich\UploaderBundle\Storage\StorageInterface"
+            public="true">
             <factory service="vich_uploader.storage_factory"
                      method="createStorage"
             />
