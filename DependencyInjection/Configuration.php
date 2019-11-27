@@ -15,14 +15,20 @@ class Configuration implements ConfigurationInterface
     /**
      * Gets the configuration tree builder for the extension.
      *
-     * @return Tree The configuration tree builder
+     * @return TreeBuilder The configuration tree builder
      */
     public function getConfigTreeBuilder()
     {
-        $tb = new TreeBuilder();
-        $root = $tb->root('vich_uploader');
+        $treeBuilder = new TreeBuilder('vich_uploader');
 
-        $root
+        // Keep compatibility with symfony/config < 4.2
+        if (\method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            $rootNode = $treeBuilder->root('vich_uploader');
+        }
+
+        $rootNode
             ->children()
                 ->scalarNode('db_driver')->isRequired()->end()
                 ->scalarNode('storage')->defaultValue('vich_uploader.storage.file_system')->end()
@@ -45,6 +51,6 @@ class Configuration implements ConfigurationInterface
             ->end()
         ;
 
-        return $tb;
+        return $treeBuilder;
     }
 }
