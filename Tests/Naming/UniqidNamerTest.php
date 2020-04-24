@@ -1,6 +1,6 @@
 <?php
 
-namespace Vich\UploaderBundle\Tests\Storage;
+namespace Vich\UploaderBundle\Tests\Naming;
 
 use Vich\UploaderBundle\Tests\DummyEntity;
 
