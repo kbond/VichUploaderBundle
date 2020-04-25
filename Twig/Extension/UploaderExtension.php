@@ -2,7 +2,7 @@
 
 namespace Vich\UploaderBundle\Twig\Extension;
 
-use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
+use Vich\UploaderBundle\Storage\StorageInterface;
 
 /**
  * UploaderExtension.
@@ -11,19 +11,11 @@ use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
  */
 class UploaderExtension extends \Twig_Extension
 {
-    /**
-     * @var UploaderHelper $helper
-     */
-    private $helper;
+    private $storage;
 
-    /**
-     * Constructs a new instance of UploaderExtension.
-     *
-     * @param UploaderHelper $helper
-     */
-    public function __construct(UploaderHelper $helper)
+    public function __construct(StorageInterface $storage)
     {
-        $this->helper = $helper;
+        $this->storage = $storage;
     }
 
     /**
@@ -58,6 +50,6 @@ class UploaderExtension extends \Twig_Extension
      */
     public function asset($obj, $field)
     {
-        return $this->helper->asset($obj, $field);
+        return $this->storage->resolveUri($obj, $field);
     }
 }
