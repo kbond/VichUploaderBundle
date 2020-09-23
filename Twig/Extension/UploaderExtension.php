@@ -2,6 +2,8 @@
 
 namespace Vich\UploaderBundle\Twig\Extension;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 use Vich\UploaderBundle\Storage\StorageInterface;
 
 /**
@@ -9,7 +11,7 @@ use Vich\UploaderBundle\Storage\StorageInterface;
  *
  * @author Dustin Dobervich <ddobervich@gmail.com>
  */
-class UploaderExtension extends \Twig_Extension
+class UploaderExtension extends AbstractExtension
 {
     private $storage;
 
@@ -36,7 +38,7 @@ class UploaderExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('vich_uploader_asset', array($this, 'asset'))
+            new TwigFunction('vich_uploader_asset', array($this, 'asset'))
         );
     }
 
