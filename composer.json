@@ -21,7 +21,6 @@
         "doctrine/orm": "@stable",
         "doctrine/common": "@stable",
         "doctrine/dbal": "@stable",
-        "doctrine/mongodb-odm": "dev-master",
         "knplabs/knp-gaufrette-bundle": "0.2.*"
     },
     "suggest": {
